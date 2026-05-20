@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Milionerzy", "Milionerzy.vcxproj", "{7F3C902B-1E0F-4D48-A620-16B075D90FEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Debug|x64.ActiveCfg = Debug|x64
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Debug|x64.Build.0 = Debug|x64
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Debug|x86.ActiveCfg = Debug|Win32
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Debug|x86.Build.0 = Debug|Win32
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Release|x64.ActiveCfg = Release|x64
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Release|x64.Build.0 = Release|x64
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Release|x86.ActiveCfg = Release|Win32
+		{7F3C902B-1E0F-4D48-A620-16B075D90FEA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D4F269C-4D13-4EC8-9AAB-4ECDE9FD44B4}
+	EndGlobalSection
+EndGlobal
