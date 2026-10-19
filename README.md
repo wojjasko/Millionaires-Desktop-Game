@@ -1,46 +1,43 @@
 # 💰 Milionerzy – Win32 API Desktop Quiz Game
-Kompleksowa aplikacja okienkowa typu quiz, wzorowana na popularnym programie telewizyjnym „Milionerzy”. Gra została zaprojektowana i zaimplementowana w języku C++ przy użyciu czystego, niskopoziomowego środowiska **Windows API (Win32)**. Aplikacja łączy zaawansowaną logikę biznesową teleturnieju z asynchronicznym przetwarzaniem multimediów i dynamicznym renderowaniem interfejsu graficznego.
+A comprehensive desktop quiz application modeled after the popular TV show "Who Wants to Be a Millionaire?". Developed in C++ using pure, low-level **Windows API (Win32)**, the game combines advanced game logic with asynchronous multimedia processing and dynamic UI rendering.
 
-## 🌟 Kluczowe Funkcjonalności
+## Key Features
 
-### 📊 System Zarządzania i Losowania Pytań
-* **Dynamiczna sesja gry:** Baza danych podzielona jest na 12 odrębnych poziomów trudności (od 500 zł do 1 000 000 zł). Na każdą nową grę system generuje unikalny zestaw pytań poprzez pseudolosowy wybór z niezależnych pul.
-* **Drabinka Wygranych Pro:** Panel boczny wyświetla pełną hierarchię nagród finansowych. System na bieżąco analizuje stan gry, podświetla aktualny poziom oraz precyzyjnie obsługuje progi gwarantowane (**1 000 zł** na poziomie 2. oraz **40 000 zł** na poziomie 7.).
+### Player & Question Management
+- **Dynamic Game Session:** The database is divided into 12 difficulty tiers (from 500 PLN to 1,000,000 PLN). Each new game generates a unique set of questions via pseudo-random selection.
+- **Prize Ladder Pro:** A sidebar displays the reward hierarchy, tracks current progress, and handles guaranteed thresholds (**1,000 PLN** at tier 2 and **40,000 PLN** at tier 7).
 
-### 🔄 Algorytmy Kół Ratunkowych (Business Logic)
-* **Koło 50/50:** Algorytm analizuje dostępne warianty, zachowuje poprawną odpowiedź i losowo eliminuje dokładnie dwie błędne opcje, nakładając na nie trwałą blokadę interakcji.
-* **Telefon do Przyjaciela:** Moduł symulacyjny oparty na rozkładzie prawdopodobieństwa. Przyjaciel posiada 70% szans na wskazanie poprawnej odpowiedzi oraz 30% szans na wybór losowej opcji.
-* **Podpowiedź Publiczności (Wykresy GDI):** Dynamiczny moduł generujący zbalansowane, losowe wyniki procentowe głosowania widowni, wyświetlane w formie graficznych słupków bezpośrednio w oknie aplikacji.
+### Lifeline Algorithms
+- **50/50 Lifeline:** Preserves the correct answer while randomly eliminating two incorrect options with permanent interaction locks.
+- **Phone a Friend:** Simulation module with a 70% probability for the correct answer and a 30% chance for a random option.
+- **Ask the Audience (GDI Charts):** A dynamic module generating balanced percentage vote bars rendered directly via GDI graphics.
 
-### 🎬 System Animacji i Multitaskingu
-* **Wielofazowy Feedback:** Po wybraniu odpowiedzi interfejs uruchamia asynchroniczny proces migania na żółto (sekwencja 8 zmian kolorów kontrolowana przez timer systemowy).
-* **Data Consistency & Security:** Na czas trwania animacji weryfikacyjnej nakładana jest całkowita blokada obsługi komunikatów myszy, uniemożliwiająca użytkownikowi kliknięcie innych odpowiedzi przed werdyktem.
-* **Audio Engine:** Zintegrowany moduł dźwiękowy odtwarzający muzykę budującą napięcie w tle za pomocą asynchronicznej pętli systemowej.
+### Animation & Multitasking System
+- **Multiphase Feedback:** Triggers an asynchronous yellow flashing sequence (8 state changes controlled by a system timer) upon selecting an answer.
+- **Data Consistency & Security:** Locks mouse input during validation to prevent premature clicks.
+- **Audio Engine:** Background tension music powered by an asynchronous system loop.
 
-## 🛠 Stack Techniczny
-* **Język programowania:** C++ (standard C++17 / C++20)
-* **Interfejs graficzny:** Windows API (Win32 User & GDI - Graphics Device Interface)
-* **Obsługa audio:** Waveform Audio (Biblioteka systemowa `winmm.lib` / `mmsystem.h`)
-* **Środowisko programistyczne:** Visual Studio (Kompilator MSVC)
+## 🛠 Tech Stack
+- **Language:** C++ (C++17 / C++20)
+- **GUI:** Windows API (Win32 User & GDI)
+- **Audio:** Waveform Audio (`winmm.lib` / `mmsystem.h`)
+- **IDE:** Visual Studio (MSVC Compiler)
 
-## 🚀 Kompilacja i Uruchomienie
+## Installation & Running
 
-### ⚠️ BARDZO WAŻNE: Konfiguracja Zasobów Multimedialnych
-System operacyjny Windows ładuje zasoby graficzne i dźwiękowe relatywnie do aktualnego katalogu roboczego uruchomionego procesu. 
+### ⚠️ Important: Multimedia Assets Configuration
+Ensure resource files are located in the executable output directory so the application can load them properly:
+1. Copy `milionerzy.bmp` and `audio.wav` from the root project directory.
+2. Paste them directly into:
+   - `[Project_Directory]/Debug/`
+   - `[Project_Directory]/x64/Debug/` (or `Release` depending on your build configuration).
 
-Aby gra działała prawidłowo i nie wyrzucała błędu krytycznego o braku plików, **po skompilowaniu projektu należy ręcznie skopiować pliki multimedialne** do odpowiednich katalogów wyjściowych (tam gdzie kompilator tworzy plik `.exe`):
+### Steps in Visual Studio:
+1. Open `Milionerzy.sln` in Microsoft Visual Studio.
+2. Verify that the multimedia library is linked (`#pragma comment(lib, "winmm.lib")`).
+3. Compile and run using **Local Windows Debugger** (F5).
 
-1. Skopiować pliki `milionerzy.bmp` oraz `audio.wav` z głównego katalogu projektu.
-2. Wkleić je bezpośrednio do folderów:
-   * `[Katalog_Projektu]/Debug/`
-   * `[Katalog_Projektu]/x64/Debug/` (lub odpowiednio `Release`, zależnie od konfiguracji w Visual Studio).
-
-### ⚙️ Kroki uruchomienia w Visual Studio:
-1. Otworzyć plik rozwiązania `Milionerzy.sln` w środowisku Microsoft Visual Studio.
-2. Upewnić się, że w konfiguracji projektu załączona jest biblioteka multimediów za pomocą dyrektywy `#pragma comment(lib, "winmm.lib")` lub we właściwościach Linkera.
-3. Skompilować i uruchomić projekt za pomocą przycisku **Local Windows Debugger** (zielona strzałka).
-
-## 📜 Przebieg Rozgrywki (Instrukcja Użytkownika)
-1. **Początek gry:** Po włączeniu aplikacji okno generuje dynamiczną strukturę. Na środku widzisz pytanie i 4 przyciski. Po prawej stronie znajduje się interaktywny panel wygranych i koła ratunkowe.
-2. **Wybór odpowiedzi:** Kliknięcie przycisku uruchamia proces sprawdzania. Przycisk miga na żółto, po czym właściwa odpowiedź podświetla się na zielono (błędna na czerwono).
-3. **Koniec gry i restart:** W przypadku porażki aplikacja wyświetla natywny komunikat `MessageBox` z informacją o zdobytej kwocie (z uwzględnieniem progów gwarantowanych). Zatwierdzenie komunikatu automatycznie resetuje stan kół, losuje nową pulę pytań i rozpoczyna nową sesję.
+## Gameplay Overview
+1. **Start:** The main window initializes with a question, four choice buttons, a prize panel, and lifelines.
+2. **Answering:** Clicking a choice starts the validation animation (yellow flash), followed by green (correct) or red (incorrect) highlighting.
+3. **End & Restart:** Game over states trigger a native `MessageBox` showing winnings based on guaranteed thresholds, automatically resetting the session upon acknowledgment.
